@@ -1,0 +1,10 @@
+# Ignore node_modules จากทั้งสองที่
+**/node_modules/
+
+# Ignore log ไฟล์
+npm-debug.log*
+yarn-error.log*
+
+# Ignore ไฟล์ OS
+.DS_Store
+Thumbs.db
