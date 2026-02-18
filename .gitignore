@@ -8,3 +8,6 @@ yarn-error.log*
 # Ignore ไฟล์ OS
 .DS_Store
 Thumbs.db
+# Ignore environment variables
+e2e/.env
+e2e/reports
