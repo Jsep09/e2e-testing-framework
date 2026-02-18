@@ -7,15 +7,20 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "cucumber:dev": "cucumber-js src/features/**/*.feature --tags @dev --require-module ts-node/register --require src/step-definitions/**/*.ts",
-    "cucumber:smoke": "cucumber-js src/features/**/*.feature --tags @smoke --require-module ts-node/register --require src/step-definitions/**/*.ts",
-    "cucumber:regression": "cucumber-js src/features/**/*.feature --tags @regression --require-module ts-node/register --require src/step-definitions/**/*.ts"
+    "transpile": "rimraf dist && babel --extensions .ts --out-dir dist src ",
+    "cucumber": "yarn transpile && cucumber-js"
   },
   "devDependencies": {
+    "@babel/cli": "^7.28.6",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "@babel/preset-typescript": "^7.28.5",
     "@cucumber/cucumber": "^12.6.0",
     "@playwright/test": "^1.58.2",
+    "@types/node": "^25.2.3",
     "dotenv": "^17.3.1",
     "playwright": "^1.58.2",
+    "rimraf": "^6.1.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }

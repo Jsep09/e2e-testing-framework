@@ -11,3 +11,4 @@ Thumbs.db
 # Ignore environment variables
 e2e/.env
 e2e/reports
+e2e/dist
