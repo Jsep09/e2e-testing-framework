@@ -25,9 +25,11 @@ After(async function (this: ScenarioWorld, scenario: ITestCaseHookParameter) {
 
   if (scenario.result?.status === "FAILED") {
     const timestamp = formatTimestamp(this.startTime || dayjs());
-    await page?.screenshot({
+    const screenshot = await page?.screenshot({
       path: `${env("SCREENSHOT_PATH")}${scenario.pickle.name}_${timestamp}.png`,
     });
+
+    this.attach(screenshot, "image/png");
   }
 
   await browser?.close();

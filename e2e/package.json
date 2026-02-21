@@ -7,9 +7,11 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "precucumber": "rimraf reports && mkdir reports",
     "transpile": "rimraf dist && babel --extensions .ts --out-dir dist src ",
     "cucumber-compile": "yarn transpile && cucumber-js",
-    "cucumber": "cross-env COMMON_CONFIG_FILE=env/common.env yarn cucumber-compile"
+    "cucumber": "cross-env COMMON_CONFIG_FILE=env/common.env yarn cucumber-compile",
+    "postcucumber": "cross-env COMMON_CONFIG_FILE=env/common.env ts-node ./src/reporter/cucumber-report.ts"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.6",
@@ -18,6 +20,7 @@
     "@babel/preset-typescript": "^7.28.5",
     "@cucumber/cucumber": "^12.6.0",
     "@playwright/test": "^1.58.2",
+    "@types/cucumber-html-reporter": "^5.0.0",
     "@types/node": "^25.2.3",
     "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
@@ -27,6 +30,8 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "dayjs": "^1.11.19"
+    "cucumber-html-reporter": "^7.2.0",
+    "dayjs": "^1.11.19",
+    "multiple-cucumber-html-reporter": "^3.10.0"
   }
 }
