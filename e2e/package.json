@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "transpile": "rimraf dist && babel --extensions .ts --out-dir dist src ",
-    "cucumber": "yarn transpile && cucumber-js"
+    "cucumber-compile": "yarn transpile && cucumber-js",
+    "cucumber": "cross-env COMMON_CONFIG_FILE=env/common.env yarn cucumber-compile"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.6",
@@ -18,10 +19,14 @@
     "@cucumber/cucumber": "^12.6.0",
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.2.3",
+    "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
     "playwright": "^1.58.2",
     "rimraf": "^6.1.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.19"
   }
 }

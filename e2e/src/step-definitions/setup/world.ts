@@ -7,6 +7,7 @@ import playwright, {
   Page,
 } from "playwright";
 import { env } from "../../env/parseEnv";
+import { Dayjs } from "dayjs";
 
 export type Screen = {
   browser: Browser;
@@ -20,6 +21,7 @@ export class ScenarioWorld extends World {
   }
 
   screen!: Screen;
+  startTime!: Dayjs;
 
   async init(ContextOptions?: BrowserContextOptions): Promise<Screen> {
     if (this.screen) {

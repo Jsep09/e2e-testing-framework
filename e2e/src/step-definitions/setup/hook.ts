@@ -1,13 +1,18 @@
 import { Before, After, ITestCaseHookParameter } from "@cucumber/cucumber";
-import { chromium, Browser, BrowserContext, Page } from "playwright";
 import { ScenarioWorld } from "./world";
+import { env } from "../../env/parseEnv";
+import { formatTimestamp } from "../../utils/date-helper";
+import dayjs from "dayjs";
 
 Before(async function (this: ScenarioWorld, scenario: ITestCaseHookParameter) {
   console.log(`Running cucumber scenario ${scenario.pickle.name}`);
 
+  this.startTime = dayjs();
+  const timestamp = formatTimestamp(this.startTime);
+
   const contextOptions = {
     recordVideo: {
-      dir: "./reports/videos/" + scenario.pickle.name,
+      dir: `${env("VIDEO_PATH")}${scenario.pickle.name}_${timestamp}`,
     },
   };
 
@@ -19,8 +24,9 @@ After(async function (this: ScenarioWorld, scenario: ITestCaseHookParameter) {
   const { page, browser } = this.screen || {};
 
   if (scenario.result?.status === "FAILED") {
+    const timestamp = formatTimestamp(this.startTime || dayjs());
     await page?.screenshot({
-      path: `./reports/screenshots/${scenario.pickle.name}.png`,
+      path: `${env("SCREENSHOT_PATH")}${scenario.pickle.name}_${timestamp}.png`,
     });
   }
 
