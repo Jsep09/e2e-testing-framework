@@ -10,4 +10,4 @@ set COMMON_CONFIG_FILE=env/common.env
 REM สั่งรันการทดสอบ (Cucumber) ด้วยตัวเลือก profile ตามชื่อ tag ที่รับมา
 REM เครื่องหมาย || (OR) ใน Batch file หมายถึง "ถ้าคำสั่งก่อนหน้าทำงานล้มเหลวให้ทำคำสั่งถัดไป" 
 REM ซึ่งทำงานเหมือนกับ || ใน Bash เลยครับ
-yarn run cucumber --profile %tag% || yarn run postcucumber
+npm run cucumber -- --profile %tag% || npm run postcucumber

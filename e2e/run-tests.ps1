@@ -9,12 +9,12 @@ param (
 $env:COMMON_CONFIG_FILE = "env/common.env"
 
 # สั่งรันการทดสอบ (Cucumber) ด้วยตัวเลือก profile ตามชื่อ tag ที่รับมา
-yarn run cucumber --profile $tag
+npm run cucumber -- --profile $tag
 
 # ตรวจสอบว่าคำสั่งก่อนหน้า (บรรทัดด้านบน) รันสำเร็จหรือไม่
 # $LASTEXITCODE เป็นตัวบอกสถานะการทำงาน ถ้าไม่ใช่ 0 (-ne 0) แปลว่ารันเทสต์บางตัวไม่ผ่าน
 if ($LASTEXITCODE -ne 0) {
     # หากเทสต์ตัวใดตัวหนึ่งไม่ผ่าน ให้สั่งรันสคริปต์ postcucumber เพื่อจัดการ หรือสร้าง report
     # เทียบได้กับการใช้ || (OR) ใน bash script ของเดิม
-    yarn run postcucumber
+    npm run postcucumber
 }

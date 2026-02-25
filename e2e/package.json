@@ -9,8 +9,7 @@
   "scripts": {
     "precucumber": "rimraf reports && mkdir reports",
     "transpile": "rimraf dist && babel --extensions .ts --out-dir dist src ",
-    "cucumber-compile": "yarn transpile && cucumber-js",
-    "cucumber": "yarn cucumber-compile",
+    "cucumber": "npm run transpile && cucumber-js",
     "postcucumber": "ts-node ./src/reporter/cucumber-report.ts"
   },
   "devDependencies": {
