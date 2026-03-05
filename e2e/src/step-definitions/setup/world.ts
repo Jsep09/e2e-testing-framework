@@ -7,6 +7,7 @@ import playwright, {
   Page,
 } from "playwright";
 import { env } from "../../env/parseEnv";
+import { GlobalConfig, GlobalVariables } from "../../env/global";
 import { Dayjs } from "dayjs";
 
 export type Screen = {
@@ -18,10 +19,14 @@ export type Screen = {
 export class ScenarioWorld extends World {
   constructor(options: IWorldOptions) {
     super(options);
+    this.globalConfig = options.parameters as GlobalConfig;
+    this.globalVariables = { currentScreen: "" };
   }
 
   screen!: Screen;
   startTime!: Dayjs;
+  globalConfig!: GlobalConfig;
+  globalVariables!: GlobalVariables;
 
   async init(ContextOptions?: BrowserContextOptions): Promise<Screen> {
     if (this.screen) {

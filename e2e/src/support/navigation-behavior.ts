@@ -1,6 +1,5 @@
 import { Page } from "playwright";
-import { env } from "process";
-import { GlobalConfig, PageId } from "src/env/global";
+import { GlobalConfig, PageId } from "../env/global";
 
 export const navigateToPage = async (
   page: Page,
@@ -14,8 +13,6 @@ export const navigateToPage = async (
   console.log("hostPath", hostPath);
 
   const url = new URL(hostPath);
-
-  console.log("url", url);
 
   const pageConfigItem = pagesConfig[pageId];
 

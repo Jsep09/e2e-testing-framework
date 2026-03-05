@@ -21,6 +21,7 @@
     "@playwright/test": "^1.58.2",
     "@types/cucumber-html-reporter": "^5.0.0",
     "@types/node": "^25.2.3",
+    "babel-plugin-module-resolver": "^5.0.2",
     "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
     "playwright": "^1.58.2",

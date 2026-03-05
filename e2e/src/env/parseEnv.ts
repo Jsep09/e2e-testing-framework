@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
 import * as fs from "fs";
+import * as nodePath from "path";
 dotenv.config();
 
 export const env = (key: string): string => {
@@ -11,7 +12,7 @@ export const env = (key: string): string => {
 };
 
 export const getJsonFromFile = <T = Record<string, string>>(
-  path: string,
+  filePath: string,
 ): T => {
-  return require(`${process.cwd()}${path}`);
+  return require(nodePath.resolve(process.cwd(), filePath));
 };
